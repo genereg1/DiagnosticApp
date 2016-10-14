@@ -1,0 +1,13 @@
+﻿extends layout
+
+block content
+	h1= title
+	form(method="post")
+		div.input
+			span.label Type your name 
+			input(type="text" name="user[name]")
+		div.input
+			span.label Description 
+			textarea(name="user[description]")
+		div.action
+			input(type="submit")

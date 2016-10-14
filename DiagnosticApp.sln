@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "DiagnosticApp", "ExpressApp3\DiagnosticApp.njsproj", "{D2E2A5A8-A8E4-4552-8D55-17E6EFF0A764}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2E2A5A8-A8E4-4552-8D55-17E6EFF0A764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2E2A5A8-A8E4-4552-8D55-17E6EFF0A764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2E2A5A8-A8E4-4552-8D55-17E6EFF0A764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E2A5A8-A8E4-4552-8D55-17E6EFF0A764}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

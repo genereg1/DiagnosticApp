@@ -11,7 +11,9 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {    
     res.send("Post Page");
     console.log(req.body.user.name);
+    console.log(req.body.user.age);
     console.log(req.body.user.description);
+    
     
     
 });

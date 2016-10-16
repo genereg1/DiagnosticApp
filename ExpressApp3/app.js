@@ -4,11 +4,13 @@ var path = require('path');
 var app = express();
 var index = require('./routes/index');
 var bodyParser = require('body-parser');
+var hbs = require('express-handlebars');
 
 
 //app.set('views', './views');
+app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'hbs');
 
 //var app = new express();
 app.use(express.static(path.join(__dirname, 'public')));

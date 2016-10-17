@@ -10,11 +10,12 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {    
     var pacientName = req.body.user.name;
+    var pacientGender = req.body.gender;
     var pacientAge = req.body.user.age;
     var pacientDescription = req.body.user.description; 
-    var pacientSex = req.body.gender;
+    
     //res.send("Post Page");
-    res.render('post', { pacientName, pacientAge, pacientDescription, pacientSex });
+    res.render('post', { pacientName, pacientAge, pacientDescription, pacientGender });
 
     console.log(req.body.user.name);
     console.log(req.body.user.age);

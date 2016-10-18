@@ -2,10 +2,12 @@
 var express = require('express');
 var path = require('path');
 var app = express();
-var index = require('./routes/index');
+var updatedb = require('./routes/updatedb');
 var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
 
+var index = require('./routes/index');
+var updatedb = require('./routes/updatedb');
 
 //app.set('views', './views');
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
@@ -28,7 +30,10 @@ app.get('/', function (req, res) {
     res.render('start');
 });
 
+
 app.use('/index', index);
+//app.use('/updatedb', updatedb);
+app.use('/', updatedb);
 
 
 

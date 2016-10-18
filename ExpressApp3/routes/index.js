@@ -20,11 +20,7 @@ router.post('/', function (req, res) {
     console.log(req.body.user.name);
     console.log(req.body.user.age);
     console.log(req.body.user.description);
-    
-    
-    
-    
-    
+        
 });
 
 module.exports = router;

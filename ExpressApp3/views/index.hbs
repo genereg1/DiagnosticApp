@@ -1,15 +1,19 @@
 ﻿<h1>{{ title }}</h1>
 <form method="post">
-    Your Name:<br>
+    <label>Your Name:</label><br>
     <input type="text" name="user[name]"> <br>
-    Gender:<br>
-    <input type="radio" name="gender" value="male" checked> Male<br>
+    <label>Gender:</label><br>
+    <input type="radio" name="gender" value="male"> Male
     <input type="radio" name="gender" value="female"> Female<br>
-    Your Age:<br>
+    <label>Your Age:</label><br>
     <input type="text" name="user[age]"> <br>
-    Description:<br>
-    <input type="text" name="user[description]"> <br/>
-    <input type="submit">
+    <label>Description:</label><br> 
+    <textarea type="text" name="user[description]" rows="5" cols="21"></textarea> <br/>
+    <input type="submit" class="btn btn-success" value="Send">
     <br>
 </form>
+<br>
+<a href="/">Go back</a>
+
+
 

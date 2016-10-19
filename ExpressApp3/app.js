@@ -41,9 +41,9 @@ app.use('/', updatedb);
 //       console.log('example app listening on port 3000!');
 //}); 
 
-app.server = http.createServer(app).listen(3000, function () {
+app.server = http.createServer(app).listen(3010, function () {
     console.log("Server running...");
 });
 
 
-//module.exports = app;
+module.exports = app;

@@ -5,7 +5,6 @@ var app = express();
 var updatedb = require('./routes/updatedb');
 var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
-
 var index = require('./routes/index');
 var updatedb = require('./routes/updatedb');
 
@@ -41,9 +40,9 @@ app.use('/', updatedb);
 //       console.log('example app listening on port 3000!');
 //}); 
 
-app.server = http.createServer(app).listen(3010, function () {
+app.server = http.createServer(app).listen(8000, function () {
     console.log("Server running...");
 });
 
 
-module.exports = app;
+module.exports = app; 

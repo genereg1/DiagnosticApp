@@ -1,28 +1,28 @@
 var express = require('express');
 var router = express.Router();
-var mongo = require('mongodb').MongoClient
-var assert = require('assert');
+var mongoose = require('mongoose');
+mongoose.connect('localhost:27017/test');
+var Schema = mongoose.Schema;
 
-var url = 'mongodb://localhost:27017/test';
+var userDateSchema = new Schema({
+    title: {type: String, required: true},
+    content: String,
+    author: String
+}, {collection: 'user-data'});
+
+var UserData = mongoose.model('UserData', userDateSchema);
+
+
+// var url = 'mongodb://localhost:27017/test';
 
 router.get('/', function(req, res) {
     res.render('updatedb');
 });
 
 router.get('/get-data', function(req, res, next) {
-    var resultArray = [];
-    mongo.connect(url, function(err, db) {
-        assert.equal(null, err);
-        var cursor = db.collection('user-data').find();
-        cursor.forEach(function(doc, err) {
-            assert.equal(null, err);
-            resultArray.push(doc);
-        }, function() {
-            db.close();
-            res.render('updatedb', { items: resultArray });
-        });
-    });
-
+   UserData.find().then(function(doc) {
+       res.render('updatedb', {items: doc});
+   });
 });
 
 router.post('/insert', function(req, res, next) {
@@ -31,26 +31,36 @@ router.post('/insert', function(req, res, next) {
         content: req.body.content,
         author: req.body.author
     };
-    
-    mongo.connect(url, function(err, db) {
-        assert.equal(null, err);
-        db.collection('user-data').insertOne(item, function(err, result) {
-            assert.equal(null, err);
-            console.log('Item inserted');
-            db.close();
-        });
-    });
 
+    var data = new UserData(item);
+    data.save();
+    
     res.redirect('/get-data');
 });
 
 router.post('/update', function(req, res, next) {
+var id = req.body.id;
 
+  UserData.findById(id, function(err, doc) {
+    if (err) {
+      console.error('error, no entry found');
+    }
+    doc.title = req.body.title;
+    doc.content = req.body.content;
+    doc.author = req.body.author;
+    doc.save();
+  })
+  res.redirect('get-data');
 });
 
 router.post('/delete', function(req, res, next) {
+    var id = req.body.id;
+    UserData.findByIdAndRemove(id).exec();
+    res.redirect('/get-data');
 
+    
 });
+
 
 
 module.exports = router;

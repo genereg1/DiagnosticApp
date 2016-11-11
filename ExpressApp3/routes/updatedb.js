@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 
 var userDateSchema = new Schema({
     title: {type: String, required: true},
-    content: String,
+    content: [String],
     author: String
 }, {collection: 'user-data'});
 
@@ -57,10 +57,8 @@ router.post('/delete', function(req, res, next) {
     var id = req.body.id;
     UserData.findByIdAndRemove(id).exec();
     res.redirect('/get-data');
-
+    
     
 });
-
-
-
 module.exports = router;
+

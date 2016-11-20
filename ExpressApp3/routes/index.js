@@ -15,6 +15,8 @@ var diseaseDateSchema = new Schema({
 var DiseaseDate = mongoose.model('DiseaseDate', diseaseDateSchema); 
 
 /* GET home page. */
+
+//test route
 router.get('/feel', function (req, res) {
     res.render('index', { title: 'Express' });
     
@@ -26,6 +28,7 @@ router.get('/get', function(req, res, next) {
    });   
 });
 
+//test route
 router.get('/find', function(req, res, next) {
     DiseaseDate.find({symptoms: "testS"}).then(function(doc) {
         res.render('index', {items: doc});

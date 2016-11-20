@@ -12,6 +12,7 @@ input.btn.btn-success {
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
 }
 
 a {
@@ -47,6 +48,10 @@ section h3 {
 
 .get {
   background: #ecf0f1;
+}
+
+.get2 {
+  position: absolute;
 }
 
 .update {

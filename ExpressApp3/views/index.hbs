@@ -13,7 +13,21 @@
     <br>
 </form>
 <br>
-<a href="/">Go back</a>
+<section class="get2">
+    <h3>Get Data</h3>
+    <a href="/get">LOAD DATA</a>
+    <div>
+        {{# each items }}
+            <article class="item">
+                <div>Title: {{ this.title }}</div>       
+                <div>Symptoms: {{ this.symptoms }}</div>
+                <div>Diagnostic: {{ this.diagnostic }}</div>    
+                <div>Id: {{ this._id }}</div>     
+            </article>
+        {{/each}}
+    </div>
+</section>
+<!--<a href="/">Go back</a>-->
 
 
 

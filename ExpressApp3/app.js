@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
     res.render('start');
 });
 
-app.use('/index', index);
+app.use('/', index);
 //app.use('/updatedb', updatedb);
 app.use('/', updatedb);
 

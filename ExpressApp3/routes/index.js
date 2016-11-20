@@ -6,46 +6,44 @@ var Schema = mongoose.Schema;
 
 var diseaseDateSchema = new Schema({
     title: String,
-    symptpoms: String,
+    symptoms: String,
     diagnostic: String
-}, {collection: 'diseace-data'});
+}, {collection: 'disease-data'});
+
+
 
 var DiseaseDate = mongoose.model('DiseaseDate', diseaseDateSchema); 
 
-
-
 /* GET home page. */
-router.get('/', function (req, res) {
+router.get('/feel', function (req, res) {
     res.render('index', { title: 'Express' });
     
 }); 
 
+router.get('/get', function(req, res, next) {
+   DiseaseDate.find().then(function(doc) {
+       res.render('index', {items: doc});
+   });   
+});
 
+router.get('/find', function(req, res, next) {
+    DiseaseDate.find({symptoms: "testS"}).then(function(doc) {
+        res.render('index', {items: doc});
+    });
+});
 
-router.post('/', function (req, res) {    
+router.post('/get', function (req, res) {    
     var pacientName = req.body.user.name;
     var pacientGender = req.body.gender;
     var pacientAge = req.body.user.age;
     var pacientDescription = req.body.user.description; 
     
     //res.send("Post Page");
-    res.render('post', { pacientName, pacientAge, pacientDescription, pacientGender });
-    
-    //DiseaseDate.find({ description: { $elemMatch: { symptoms: pacientDescription } } }, function (doc) {
-        //res.render('post', { items: doc });
-    //});
-
-
-    //console.log(DiseaseDate.find({ description: { $elemMatch: { symptoms: pacientDescription } } });
-
-
-    
-});
-
-router.get('/', function(req, res, next) {
-   DataDisease.find().then(function(doc) {
-       res.render('updatedb', {items: doc});
-   });
+    //res.render('post', { pacientName, pacientAge, pacientDescription, pacientGender });
+    DiseaseDate.find({symptoms: pacientDescription}).then(function(doc) {
+        console.log(doc);
+        res.render('index', { items: doc });        
+    })
 });
 
 module.exports = router;

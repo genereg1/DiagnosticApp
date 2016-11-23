@@ -17,7 +17,7 @@ var DiseaseDate = mongoose.model('DiseaseDate', diseaseDateSchema);
 /* GET home page. */
 
 //test route
-router.get('/feel', function (req, res) {
+router.get('/index', function (req, res) {
     res.render('index', { title: 'Express' });
     
 }); 
@@ -40,13 +40,16 @@ router.post('/get', function (req, res) {
     var pacientGender = req.body.gender;
     var pacientAge = req.body.user.age;
     var pacientDescription = req.body.user.description; 
+    var regExp = new RegExp(pacientDescription, 'i');
+    
     
     //res.send("Post Page");
     //res.render('post', { pacientName, pacientAge, pacientDescription, pacientGender });
-    DiseaseDate.find({symptoms: pacientDescription}).then(function(doc) {
-        console.log(doc);
-        res.render('index', { items: doc });        
-    })
+    DiseaseDate.find({symptoms: regExp}).then(function(doc) {
+        
+        res.render('index', { items: doc });
+        
+    });
 });
 
 module.exports = router;

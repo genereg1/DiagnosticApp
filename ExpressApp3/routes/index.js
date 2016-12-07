@@ -44,17 +44,39 @@ router.post('/get', function (req, res) {
         description: req.body.user.description
     };
 
-    var pacientDescription = req.body.user.description;
-    var regExp = new RegExp(item.description, 'i');
-    
-    
     var data = new UserDate(item);
     data.save();
 
-    DiseaseDate.find({symptoms: regExp}).then(function(doc) {
-        
-        res.render('index', { items: doc });
-        
+    var pacientDescription = req.body.user.description;
+    var regExp = new RegExp(item.description, 'gi');
+    
+
+    // var query = DiseaseDate.find({ symptoms: regExp}).select('symptoms');
+    // query.exec(function (err, symptom) {
+    //     if (err) return handleError(err);
+    //     //console.log(symptom); 
+    //     var str = new String(symptom);
+    //     resultMatch = str.match(regExp);
+    //     console.log(resultMatch);
+    // });
+    
+    //Reg search and display data on index    
+    DiseaseDate.find({ symptoms: regExp }).then(function (doc) {
+         res.render('index', { items: doc });
+    });
+
+    var query2 = DiseaseDate.find({ symptoms: regExp }, 'symptoms', function(err, docs) {
+        //res.render('index', { items: docs });
+        query2.exec(function (err, symptom) {
+            if (err) return handleError(err);
+            
+        //Перебор массива симптомов на количество совпадений
+        docs.forEach(function(item) {
+            var str = new String(item);
+            resultMatch = str.match(regExp);
+            console.log(resultMatch);
+        });
+        });
     });
 });
 

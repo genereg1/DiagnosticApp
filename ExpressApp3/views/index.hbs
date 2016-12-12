@@ -1,33 +1,46 @@
 ﻿<h1>{{ title }}</h1>
-<form method = "post">
-    <label>Your Name:</label><br>
-    <input type="text" name="user[name]"> <br>
-    <label>Gender:</label><br>
-    <input type="radio" name="gender" value="male"> Male
-    <input type="radio" name="gender" value="female"> Female<br>
-    <label>Your Age:</label><br>
-    <input type="text" name="user[age]"> <br>
-    <label>Description:</label><br> 
-    <textarea type="text" name="user[description]" rows="5" cols="21"></textarea> <br/>
-    <input type="submit" class="btn btn-success" value="Send">
-    <br>
-</form>
-<br>
-<section class="get2">
-    <h3>Get Data</h3>
-    <a href="/get">LOAD DATA</a>
-    <div>
-        {{# each items }}
-            <article class="item">
-                <div>Title: {{ this.title }}</div>       
-                <div>Symptoms: {{ this.symptoms }}</div>
-                <div>Diagnostic: {{ this.diagnostic }}</div>    
-                {{!--<div>Id: {{ this._id }}</div>     --}}
-            </article>
-        {{/each}}
+<div class="container">
+    <form method="post">
+        <div class="row">
+            <div class="six columns">
+                <label>Your Name:</label><br>
+                <input type="text" name="user[name]"> <br>
+                <label>Gender:</label><br>
+                <input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"> Female<br>
+                <label>Your Age:</label><br>
+                <input type="text" name="user[age]"> <br>
+                <label>Description:</label><br>
+                <textarea type="text" name="user[description]" rows="5" cols="21"></textarea> <br/>
+                <input type="submit" class="btn btn-success" value="Send">
+    </form>
     </div>
-</section>
+    </div>
+    <div class="row" id="result">
+        <div class="six columns">
+            <section class="get2">
+                <h3>Result Data</h3>
+                <a href="/get">GET DATA</a>
+                <div>
+                    {{#each items}}
+                        
+                    <article class="item">
+                        <div class="title">{{this.title}}</div>  
+                        <div></div>
+                                                          
+                        <input type="checkbox" id="toogle-1"> Show Symptoms
+                        <div class="symptoms">Symptoms: {{ this.symptoms }}</div>
+                        <div class="diagnostic">Diagnostic: {{ this.diagnostic }}</div>
+                    </article>
+                    
+                    {{/each}}
+                    <div>
+                    <h4> {{#each result1}} {{ this }} {{/each}}</h4>
+                    </div>
+                    
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
 <!--<a href="/">Go back</a>-->
-
-
-

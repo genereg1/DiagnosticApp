@@ -9,7 +9,11 @@ var index = require('./routes/index');
 var updatedb = require('./routes/updatedb');
 
 //app.set('views', './views');
-app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
+app.engine('hbs', hbs({
+    extname: 'hbs',
+    defaultLayout: 'layout',
+    layoutsDir: __dirname + '/views/layouts/'
+}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
@@ -25,7 +29,7 @@ app.use(bodyParser.json());
 
 
 app.get('/', function (req, res) {
-   // res.send('Lets start');
+    // res.send('Lets start');
     res.render('start');
 });
 
@@ -44,4 +48,4 @@ app.server = http.createServer(app).listen(8000, function () {
 });
 
 
-module.exports = app; 
+module.exports = app;

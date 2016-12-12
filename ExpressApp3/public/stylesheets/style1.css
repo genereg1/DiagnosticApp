@@ -1,4 +1,4 @@
-﻿/*body {    
+﻿/*/*body {    
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;  
     
@@ -9,13 +9,8 @@ input.btn.btn-success {
     top: 10px;
 }*/
 
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  height: 100%;
-}
 
-a {
+/*a {
   color: #00B7FF;
 }
 
@@ -84,11 +79,30 @@ button {
 
 button:hover {
   background: #bdc3c7;
-}
+}*/
 
-.item {
+/*.item {
   margin: 10px 0;
   padding: 5px;
   background: #95a5a6;
   border: 1px solid black;
+}*/
+
+
+#result {
+  position: relative;
+  left: 350px;
+  bottom: 525px;
+}
+
+.symptoms {
+  display: none;
+}
+
+.diagnostic {
+  display: none;
+}
+
+input[type=checkbox]:checked ~ .symptoms {
+  display: block;
 }

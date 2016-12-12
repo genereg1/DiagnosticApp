@@ -1,7 +1,6 @@
-var s = '[description:"aoeu" uuid:"123sth"]';
+var arr = [];
+var str = "боль, страан, check";
+arr = str;
+console.log(arr);
 
-var re = /\s*([^[:]+):\"([^"]+)"/g;
-var m;
-while (m = re.exec(s)) {
-  console.log(m[1], m[2]);
-}
+

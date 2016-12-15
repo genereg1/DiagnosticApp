@@ -1,8 +1,11 @@
 ﻿var express = require('express');
 var router = express.Router();
+var nodemailer = require('nodemailer');
 var mongoose = require('mongoose');
 db = mongoose.createConnection('mongodb://localhost:27017/test');
 var Schema = mongoose.Schema;
+
+var app = express();
 
 var diseaseDateSchema = new Schema({
     title: String,
@@ -25,6 +28,11 @@ var userDateSchema = new Schema({
 var DiseaseDate = mongoose.model('DiseaseDate', diseaseDateSchema);
 var UserDate = mongoose.model('UserDate', userDateSchema);
 
+
+
+
+
+
 /* GET home page. */
 
 //test route
@@ -32,7 +40,8 @@ router.get('/index', function (req, res) {
     res.render('index', {
         title: 'Express'
     });
-
+   
+    
 });
 
 router.get('/get', function (req, res, next) {
@@ -43,7 +52,6 @@ router.get('/get', function (req, res, next) {
     });
 });
 
-
 router.post('/get', function (req, res) {
     var item = {
         name: req.body.user.name,
@@ -53,15 +61,22 @@ router.post('/get', function (req, res) {
     };
 
     var data = new UserDate(item);
-    //data.save();
+    data.save();
 
     var pacientDescription = req.body.user.description;
     var resultReqExp = pacientDescription.replace(/, /, "| ");
     var regExp = new RegExp(resultReqExp, 'gi');
     var lArray = [];
-    
+    var percentArray = [];
 
-
+    function getPercentMatch() {
+            var maxElem = Math.max.apply(null, lArray);
+            lArray.forEach(function(item, lArray) {
+                var resultPercent = (item * 90)/maxElem;
+                percentArray.push(resultPercent + "%");
+                //console.log(percentArray);
+            }
+            )};
 
     //Reg search and display data on index    
     DiseaseDate.find({
@@ -70,29 +85,17 @@ router.post('/get', function (req, res) {
         doc.forEach(function (item) {
             var str = new String(item);
             resultMatch = str.match(regExp);
-            
+
             lArray.push(resultMatch.length);
             //return lArray;
-            console.log(lArray);
+            //console.log(lArray);
             
         });
-
-         function getPercentArray() {
-            var maxValue = Math.max.apply(null, lArray);
-            
-
-        };
         
-        getPercentArray();
-        
-        
-        
-        res.render('index', { items: doc });
-
+        res.render('index', { items: doc, 
+                              items2 : percentArray});
+        getPercentMatch();        
     });
-
-   
-
 
     var query2 = DiseaseDate.find({
         symptoms: regExp
@@ -103,14 +106,8 @@ router.post('/get', function (req, res) {
 
             //Перебор массива симптомов на количество совпадений
 
-
-
         });
     });
 });
-
-
-
-
 
 module.exports = router;

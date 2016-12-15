@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
 var index = require('./routes/index');
 var updatedb = require('./routes/updatedb');
+var mail = require('./routes/mail');
+
+var router = express.Router();
 
 //app.set('views', './views');
 app.engine('hbs', hbs({
@@ -27,7 +30,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-
 app.get('/', function (req, res) {
     // res.send('Lets start');
     res.render('start');
@@ -36,6 +38,8 @@ app.get('/', function (req, res) {
 app.use('/', index);
 //app.use('/updatedb', updatedb);
 app.use('/', updatedb);
+
+app.use('/sayHello', mail);
 
 
 

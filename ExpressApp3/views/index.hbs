@@ -3,7 +3,7 @@
     <form method="post">
         <div class="row">
             <div class="six columns">
-                <label>Your Name:</label><br>
+                <label>Pacient Name:</label><br>
                 <input type="text" name="user[name]"> <br>
                 <label>Gender:</label><br>
                 <input type="radio" name="gender" value="male"> Male
@@ -13,31 +13,34 @@
                 <label>Description:</label><br>
                 <textarea type="text" name="user[description]" rows="5" cols="21"></textarea> <br/>
                 <input type="submit" class="btn btn-success" value="Send">
+                <input type="button" value="Print this page" onclick="window.print()">
+                
+                
     </form>
-    </div>
-    </div>
+    <form action="/sayHello" method="post">
+        <button type="submit" name="your_name" value="your_value" class="btn-link">Send Mail</button>
+        </form>
+        </div>
+        
+        
     <div class="row" id="result">
         <div class="six columns">
             <section class="get2">
-                <h3>Result Data</h3>
-                <a href="/get">GET DATA</a>
-                <div>
+                <h4>Result Data</h4>
+                {{!--<a href="/get">GET DATA</a>--}}
+                <div>                                            
                     {{#each items}}
-                        
                     <article class="item">
                         <div class="title">{{this.title}}</div>  
-                        <div></div>
-                                                          
-                        <input type="checkbox" id="toogle-1"> Show Symptoms
-                        <div class="symptoms">Symptoms: {{ this.symptoms }}</div>
-                        <div class="diagnostic">Diagnostic: {{ this.diagnostic }}</div>
+                        {{!--<div>
+                            <h4>  {{ this }} </h4>                            
+                        </div>--}}
+                        <input type="checkbox" id="toogle-1"> <i>Show Symptoms</i>                                                                                
+                        <div class="symptoms">Symptoms: {{this.symptoms }}</div>
+                        <div class="diagnostic">Diagnostic: {{this.diagnostic }}</div>                        
                     </article>
-                    
-                    {{/each}}
-                    <div>
-                    <h4> {{#each result1}} {{ this }} {{/each}}</h4>
-                    </div>
-                    
+                        {{/each}}                        
+                    {{!--{{/each}}--}}                                                       
                 </div>
             </section>
         </div>

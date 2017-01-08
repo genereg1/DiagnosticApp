@@ -83,9 +83,18 @@ button:hover {
 
 .item {
     padding: 20px;
-    background: #f5f5f5;
+    background: #a7b2df;
     box-shadow: 0 0 5px #cccccc;
 }
+
+
+.item2 {
+    padding: 20px;
+    background: #f5f5f5;
+    box-shadow: 0 0 5px#cccccc;
+    
+}
+
 
 
 /*#result {
@@ -104,4 +113,80 @@ button:hover {
 
 input[type=checkbox]:checked ~ .symptoms {
   display: block;
+}
+
+#formstyle {
+    margin: 20px;
+    padding: 20px;
+    background: #f5f5f5;
+    box-shadow: 0 0 5px#cccccc;
+    opacity: 0.87;
+}
+
+.container {
+  top: 30px;
+}
+
+/*sssss*/
+
+nav.primary{
+  display: table;
+  margin: 0 auto;
+}
+
+nav.primary ul, nav.primary ul li {
+  margin: 0px;
+}
+
+nav.primary select {
+  display: none;
+  width:  100%;
+  height: 28px;
+  margin: 21px 0;
+}
+
+nav.primary ul li {
+  display: inline;
+  
+  position: relative;
+}
+
+nav.primary ul li a {
+  display: inline-block;
+  line-height: 49px;
+  padding:  0 14px;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  background: #292c47;
+}
+
+nav.primary ul li a:hover {
+  background: #2ecc71;
+  cursor: pointer;
+}
+
+#nav {
+  background: #292c47
+}
+
+#row1 {
+  background: #f5f5f5;
+}
+
+body {
+  background-image: url(/img/14957-NQ30T3.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  
+}
+
+#startButton {
+  color: white;
+  position: relative;
+  top: 90px;
+  left: 1000px;
+  background: #292c47;
 }

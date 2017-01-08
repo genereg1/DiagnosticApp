@@ -1,48 +1,51 @@
-﻿<h1>{{ title }}</h1>
-<div class="container">
-    <form method="post">
-        <div class="row">
-            <div class="six columns">
-                <label>Pacient Name:</label><br>
-                <input type="text" name="user[name]"> <br>
-                <label>Gender:</label><br>
-                <input type="radio" name="gender" value="male"> Male
-                <input type="radio" name="gender" value="female"> Female<br>
-                <label>Your Age:</label><br>
-                <input type="text" name="user[age]"> <br>
-                <label>Description:</label><br>
-                <textarea type="text" name="user[description]" rows="5" cols="21"></textarea> <br/>
-                <input type="submit" class="btn btn-success" value="Send">
-                <input type="button" value="Print this page" onclick="window.print()">
-                
-                
-    </form>
-    <form action="/sayHello" method="post">
-        <button type="submit" name="your_name" value="your_value" class="btn-link">Send Mail</button>
+﻿    <div class="container">
+        <form method="post">
+            <div class="row">
+                <div class="five columns" id="formstyle">
+                    <label>Pacient Name:</label><br>
+                    <input type="text" name="user[name]"> <br>
+                    <label>Gender:</label><br>
+                    <input type="radio" name="gender" value="male"> Male
+                    <input type="radio" name="gender" value="female"> Female<br>
+                    <label>Your Age:</label><br>
+                    <input type="text" name="user[age]"> <br>
+                    <label>Description:</label><br>
+                    <textarea type="text" name="user[description]" rows="0" cols="28"></textarea> <br/>
+                    <input type="submit" class="btn btn-success" value="Send">
+                    <input type="button" value="Print this page" onclick="window.print()">
+                    
+                    
         </form>
-        </div>
+                <form action="/sayHello" method="post">
+                    <button type="submit" name="your_name" value="your_value" class="btn-link">Send Mail</button>
+                </form>
+            </div>
         
         
-    <div class="row" id="result">
-        <div class="six columns">
+    <div class="row">
+        <div class="five columns" id="formstyle">
             <section class="get2">
-                <h4>Result Data</h4>
+                <h4>Diagnosis</h4>
                 {{!--<a href="/get">GET DATA</a>--}}
                 <div>                                            
-                    {{#each items}}
-                    <article class="item">
-                        <div class="title">{{this.title}}</div>  
-                        {{!--<div>
-                            <h4>  {{ this }} </h4>                            
-                        </div>--}}
+                    {{#each items}}                     
+                    <article class="item2">
+                        <div class="title">{{this.title}}</div>                          
                         <input type="checkbox" id="toogle-1"> <i>Show Symptoms</i>                                                                                
                         <div class="symptoms">Symptoms: {{this.symptoms }}</div>
                         <div class="diagnostic">Diagnostic: {{this.diagnostic }}</div>                        
                     </article>
-                        {{/each}}                        
-                    {{!--{{/each}}--}}                                                       
+                    {{/each}}                                                                                                              
                 </div>
-            </section>
+            </section>                                       
+            </div>
+        </div>
+        {{!--<div class="row">
+            <div class="one column">
+                <section class="item">
+
+                </section>
+            </div>--}}
         </div>
     </div>
 </div>

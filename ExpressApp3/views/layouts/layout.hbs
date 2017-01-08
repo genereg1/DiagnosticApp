@@ -5,7 +5,7 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Your page title here :)</title>
+  <title>Diagnostic App</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -23,12 +23,30 @@
   <link rel="stylesheet" href="/stylesheets/skeleton.css">
   <link rel="stylesheet" href="/stylesheets/style1.css">
 
+  {{!--<link rel="stylesheet" href="stylesheets/bootstrap.min.css">--}}
+  
+  
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 
 </head>
 <body>
+  <!--Navigation-->
+{{!--<div class="band navigation">--}}
+    <nav class="container primary" id="nav">
+      <div class="row">
+        <div class="twelve columns">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/get-data">DataBase Update</a></li>
+                <li><a href="/pacient-list">Pacients List</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="/sayHello">Send E-mail</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
     {{{ body }}}
 </body>
 </html>

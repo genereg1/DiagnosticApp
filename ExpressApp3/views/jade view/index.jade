@@ -1,0 +1,48 @@
+extends layout 
+
+block content    
+    .container
+        form(method='post')
+            .row
+                #formstyle.six.columns
+                    label Pacient Name:
+                    br
+                    input(type='text', name='user[name]')
+                    br
+                    label Gender:
+                    br
+                    input(type='radio', name='gender', value='male')
+                    |  Male
+                    input(type='radio', name='gender', value='female')
+                    |  Female
+                    br
+                    label Your Age:
+                    br
+                    input(type='text', name='user[age]')
+                    br
+                    label Description:
+                    br
+                    textarea(type='text', name='user[description]', rows='0', cols='44')
+                    br
+                    input.btn.btn-success(type='submit', value='Send')
+                    input(type='button', value='Print this page', onclick='window.print()')
+                    form(action='/sayHello', method='post')
+                    button.btn-link(type='submit', name='your_name', value='your_value') Send Mail
+
+                #result.row
+                    #formstyle.five.columns
+                        section.get2
+                        h4 Result Data
+                        a(href='/get') GET DATA
+                        div
+                            each item in items 
+                                //- each item2 in items2                                                                                     
+                                p= item.title
+                                p= item2                          
+                                                                                        
+                            //- article.item
+                            //- .title                                                             
+                            //- input#toogle-1(type='checkbox')
+                            //- i Show Symptoms
+                            //- .symptoms Symptoms: 
+                            //- .diagnostic Diagnostic:

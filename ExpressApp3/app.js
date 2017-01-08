@@ -8,17 +8,21 @@ var hbs = require('express-handlebars');
 var index = require('./routes/index');
 var updatedb = require('./routes/updatedb');
 var mail = require('./routes/mail');
+var pacient = require('./routes/pacient');
+// var jade = require('jade');
 
 var router = express.Router();
 
-//app.set('views', './views');
+app.set('views', './views');
 app.engine('hbs', hbs({
     extname: 'hbs',
     defaultLayout: 'layout',
     layoutsDir: __dirname + '/views/layouts/'
 }));
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+// app.set('view engine', 'jade');
 
 //var app = new express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -40,6 +44,8 @@ app.use('/', index);
 app.use('/', updatedb);
 
 app.use('/sayHello', mail);
+
+app.use('/pacient-list', pacient);
 
 
 

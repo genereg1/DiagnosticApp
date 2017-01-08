@@ -3,9 +3,11 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 var mongoose = require('mongoose');
 db = mongoose.createConnection('mongodb://localhost:27017/test');
+
+var Pacient = require('./pacient-data_model');
 var Schema = mongoose.Schema;
 
-var app = express();
+
 
 var diseaseDateSchema = new Schema({
     title: String,
@@ -15,21 +17,18 @@ var diseaseDateSchema = new Schema({
     collection: 'disease-data'
 });
 
-var userDateSchema = new Schema({
-    name: String,
-    gender: String,
-    age: Number,
-    description: String
-}, {
-    collection: 'user-data'
-});
+// var userDateSchema = new Schema({
+//     name: String,
+//     gender: String,
+//     age: Number,
+//     description: String
+// }, {
+//     collection: 'user-data'
+// });
 
 
 var DiseaseDate = mongoose.model('DiseaseDate', diseaseDateSchema);
-var UserDate = mongoose.model('UserDate', userDateSchema);
-
-
-
+// var UserDate = mongoose.model('UserDate', userDateSchema);
 
 
 
@@ -60,7 +59,7 @@ router.post('/get', function (req, res) {
         description: req.body.user.description
     };
 
-    var data = new UserDate(item);
+    var data = new Pacient(item);
     data.save();
 
     var pacientDescription = req.body.user.description;
@@ -91,10 +90,13 @@ router.post('/get', function (req, res) {
             //console.log(lArray);
             
         });
-        
+        getPercentMatch();  
+
         res.render('index', { items: doc, 
-                              items2 : percentArray});
-        getPercentMatch();        
+                              items2: percentArray});
+        
+        console.log(percentArray);      
+            
     });
 
     var query2 = DiseaseDate.find({

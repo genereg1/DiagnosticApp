@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
         to: 'nourdalbonzo@gmail.com',
         subject: 'test',
         // text: 'textTest',
-        html: '<h1>U are best</h1>'
+        html: '<h1>Hello from Khpi AP</h1>'
     }
 
     transporter.sendMail(mailOptions, function(error, info) {

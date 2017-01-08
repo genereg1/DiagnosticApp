@@ -1,5 +1,7 @@
-<h1>DataBase update</h1>
-<section class="insert">
+<div class="container">
+    <div class="row">
+        <div class="five columns">
+<section class="insert" id="formstyle">
     <h3>Insert Data</h3>
     <form action="/insert" method="post">
         <div class="input">
@@ -13,11 +15,15 @@
         <div class="input">
             <label for="author">Author</label>
             <input type="text" id="author" name="author">
-        </div>
+        </div>        
         <button type="submit">INSERT</button>
     </form>
 </section>
-<section class="get">
+        </div>
+    </div>
+    <div class="row">
+        <div class="five columns">
+    <section class="get" id="formstyle">
     <h3>Get Data</h3>
     <a href="/get-data">LOAD DATA</a>
     <div>
@@ -31,7 +37,11 @@
         {{/each}}
     </div>
 </section>
-<section class="update">
+        </div>
+    </div>
+    <div class="row">
+        <div class="five columns">
+<section class="update" id="formstyle">
     <h3>Update Data</h3>
     <form action="/update" method="post">
         <div class="input">
@@ -52,9 +62,13 @@
         </div>
         <button type="submit">UPDATE</button>
     </form>
+{{!--</section>--}}
 </section>
-</section>
-<section class="delete">
+        </div>
+        </div>
+        <div class="row">
+        <div class="five columns">
+<section class="delete" id="formstyle">
     <h3>Delete Data</h3>
     <form action="/delete" method="post">
         <div class="input">
@@ -64,3 +78,7 @@
         <button type="submit">DELETE</button>
     </form>
 </section>
+        </div>
+        </div>
+{{!--container--}}
+</div> 

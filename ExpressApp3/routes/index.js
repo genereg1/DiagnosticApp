@@ -4,18 +4,20 @@ var nodemailer = require('nodemailer');
 var mongoose = require('mongoose');
 db = mongoose.createConnection('mongodb://localhost:27017/test');
 
+
+var Disease = require('./diseaseData_model');
 var Pacient = require('./pacient-data_model');
 var Schema = mongoose.Schema;
 
 
 
-var diseaseDateSchema = new Schema({
-    title: String,
-    symptoms: String,
-    diagnostic: String
-}, {
-    collection: 'disease-data'
-});
+// var diseaseDateSchema = new Schema({
+//     title: String,
+//     symptoms: String,
+//     diagnostic: String
+// }, {
+//     collection: 'disease-data'
+// });
 
 // var userDateSchema = new Schema({
 //     name: String,
@@ -27,7 +29,7 @@ var diseaseDateSchema = new Schema({
 // });
 
 
-var DiseaseDate = mongoose.model('DiseaseDate', diseaseDateSchema);
+// var DiseaseDate = mongoose.model('DiseaseDate', diseaseDateSchema);
 // var UserDate = mongoose.model('UserDate', userDateSchema);
 
 
@@ -37,26 +39,26 @@ var DiseaseDate = mongoose.model('DiseaseDate', diseaseDateSchema);
 //test route
 router.get('/index', function (req, res) {
     res.render('index', {
-        title: 'Express'
-    });
+        title: 'Express' });
    
     
 });
 
-router.get('/get', function (req, res, next) {
-    DiseaseDate.find().then(function (doc) {
+router.get('/index', function (req, res, next) {
+    Disease.find().then(function (doc) {
         res.render('index', {
             items: doc
         });
     });
 });
 
-router.post('/get', function (req, res) {
+router.post('/index', function (req, res) {
     var item = {
         name: req.body.user.name,
         gender: req.body.gender,
         age: req.body.user.age,
-        description: req.body.user.description
+        description: req.body.user.description,
+        email: req.body.email
     };
 
     var data = new Pacient(item);
@@ -78,7 +80,7 @@ router.post('/get', function (req, res) {
             )};
 
     //Reg search and display data on index    
-    DiseaseDate.find({
+    Disease.find({
         symptoms: regExp
     }).then(function (doc, reslt) {
         doc.forEach(function (item) {
@@ -95,11 +97,11 @@ router.post('/get', function (req, res) {
         res.render('index', { items: doc, 
                               items2: percentArray});
         
-        console.log(percentArray);      
+        // console.log(percentArray);      
             
     });
 
-    var query2 = DiseaseDate.find({
+    var query2 = Disease.find({
         symptoms: regExp
     }, 'symptoms', function (err, docs) {
         //res.render('index', { items: docs });

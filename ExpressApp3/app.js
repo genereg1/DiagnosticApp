@@ -10,8 +10,11 @@ var updatedb = require('./routes/updatedb');
 var mail = require('./routes/mail');
 var pacient = require('./routes/pacient');
 // var jade = require('jade');
-
+var methodOverride = require('method-override');
 var router = express.Router();
+
+
+app.use(methodOverride('_method'));
 
 app.set('views', './views');
 app.engine('hbs', hbs({
@@ -45,8 +48,9 @@ app.use('/', updatedb);
 
 app.use('/sayHello', mail);
 
-app.use('/pacient-list', pacient);
+app.use('/', pacient);
 
+app.use('/delete-pacient', pacient);
 
 
 //app.listen(3000, function () {

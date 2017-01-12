@@ -5,7 +5,9 @@ var userDateSchema = new Schema({
     name: String,
     gender: String,
     age: Number,
-    description: String
+    description: String,
+    email: String
+
 }, {
     collection: 'user-data'
 });

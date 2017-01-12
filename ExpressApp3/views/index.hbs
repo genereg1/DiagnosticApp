@@ -2,16 +2,18 @@
         <form method="post">
             <div class="row">
                 <div class="five columns" id="formstyle">
-                    <label>Pacient Name:</label><br>
-                    <input type="text" name="user[name]"> <br>
-                    <label>Gender:</label><br>
-                    <input type="radio" name="gender" value="male"> Male
+                    <label for="name">Pacient Name:</label>
+                    <input type="text" name="user[name]" id="name"> <br>
+                    <label for="gender">Gender:</label>
+                    <input type="radio" name="gender" value="male" id="gender"> Male
                     <input type="radio" name="gender" value="female"> Female<br>
-                    <label>Your Age:</label><br>
-                    <input type="text" name="user[age]"> <br>
-                    <label>Description:</label><br>
-                    <textarea type="text" name="user[description]" rows="0" cols="28"></textarea> <br/>
-                    <input type="submit" class="btn btn-success" value="Send">
+                    <label for="age">Your Age:</label>
+                    <input type="text" name="user[age]" id="age"> <br>
+                    <label for="description">Description:</label>
+                    <textarea type="text" name="user[description]" id="description" rows="0" cols="28"></textarea> <br/>
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email"> <br>
+                    <input type="submit" class="" value="Send">
                     <input type="button" value="Print this page" onclick="window.print()">
                     
                     
@@ -22,31 +24,36 @@
             </div>
         
         
-    <div class="row">
+    {{!--<div class="row">--}}
         <div class="five columns" id="formstyle">
             <section class="get2">
                 <h4>Diagnosis</h4>
                 {{!--<a href="/get">GET DATA</a>--}}
                 <div>                                            
-                    {{#each items}}                     
+                    {{#each items}}                                                                                                           
                     <article class="item2">
                         <div class="title">{{this.title}}</div>                          
                         <input type="checkbox" id="toogle-1"> <i>Show Symptoms</i>                                                                                
                         <div class="symptoms">Symptoms: {{this.symptoms }}</div>
                         <div class="diagnostic">Diagnostic: {{this.diagnostic }}</div>                        
                     </article>
-                    {{/each}}                                                                                                              
+                    {{/each}}  
                 </div>
-            </section>                                       
+                {{!--<div>
+                    {{#each items2}}   
+                    <p>{{this}}</p> 
+                    {{/each}}  
+                </div>                                                     --}}
+                </section>                                                                                                                                                                                                                                                      
+            </div>
+            <div class="one column" id="percentform">
+                {{#each items2}}   
+                <p>{{this}}</p> 
+                {{/each}}  
             </div>
         </div>
-        {{!--<div class="row">
-            <div class="one column">
-                <section class="item">
-
-                </section>
-            </div>--}}
-        </div>
+        {{!--<div class="row">--}}
+            
     </div>
 </div>
 <!--<a href="/">Go back</a>-->

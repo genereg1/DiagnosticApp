@@ -4,14 +4,7 @@ var mongoose = require('mongoose');
 mongoose.connect('localhost:27017/test');
 var Schema = mongoose.Schema;
 
-var userDateSchema = new Schema({
-    title: {type: String, required: true},
-    content: [String],
-    author: String
-}, {collection: 'user-data'});
-
-var UserData = mongoose.model('UserData', userDateSchema);
-
+var Pacient = require('./pacient-data_model');
 
 // var url = 'mongodb://localhost:27017/test';
 
@@ -20,19 +13,19 @@ router.get('/', function(req, res) {
 });
 
 router.get('/get-data', function(req, res, next) {
-   UserData.find().then(function(doc) {
+   Pacient.find().then(function(doc) {
        res.render('updatedb', {items: doc});
    });
 });
 
 router.post('/insert', function(req, res, next) {
     var item = {
-        title: req.body.title,
-        content: req.body.content,
-        author: req.body.author
+        name: req.body.name,
+        age: req.body.age,
+        description: req.body.description
     };
 
-    var data = new UserData(item);
+    var data = new Pacient(item);
     data.save();
     
     res.redirect('/get-data');
@@ -41,21 +34,22 @@ router.post('/insert', function(req, res, next) {
 router.post('/update', function(req, res, next) {
 var id = req.body.id;
 
-  UserData.findById(id, function(err, doc) {
+  Pacient.findById(id, function(err, doc) {
     if (err) {
       console.error('error, no entry found');
     }
-    doc.title = req.body.title;
-    doc.content = req.body.content;
-    doc.author = req.body.author;
+    doc.name = req.body.name;
+    doc.age = req.body.name;
+    doc.description = req.body.name;
     doc.save();
   })
   res.redirect('get-data');
 });
 
 router.post('/delete', function(req, res, next) {
+
     var id = req.body.id;
-    UserData.findByIdAndRemove(id).exec();
+    Pacient.findByIdAndRemove(id).exec();
     res.redirect('/get-data');
     
     

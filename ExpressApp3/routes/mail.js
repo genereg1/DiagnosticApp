@@ -2,13 +2,9 @@ var nodemailer = require('nodemailer');
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res) {
-    console.log('fuck');
-    
-});
-
-router.post('/', function(req, res) {
-        
+router.get('/:id', function(req, res) {
+    var id = req.params.id;    
+    console.log(id);
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -20,7 +16,8 @@ router.post('/', function(req, res) {
 
     var mailOptions = {
         from: 'eugeneberegovoj@gmail.com',
-        to: 'nourdalbonzo@gmail.com',
+        // to: 'nourdalbonzo@gmail.com',
+        to: id,
         subject: 'test',
         // text: 'textTest',
         html: '<h1>Hello from Khpi AP</h1>'
@@ -32,7 +29,8 @@ router.post('/', function(req, res) {
         res.json({yo: 'error'});
     } else {
         console.log('Message sent: ' + info.response);
-        res.json({yo: info.response});
+        // res.json({yo: info.response});
+        res.render('sucsess');
     };
 
 

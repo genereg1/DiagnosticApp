@@ -1,13 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="twelve columns">
+          {{!--<form action="/delete-pacient" method="post">--}}
             <table class="u-full-width">
               <thead>
                 <tr>
-                  <th>Name</th>
+                  <th style="padding-left: 12px;">Name</th>
                   <th>Age</th>
-                  <th>Sex</th>
+                  <th>Gender</th>
                   <th>Diagnostic</th>
+                  <th>Email</th>
+                  {{!--<th>Delete</th>--}}
                 </tr>
               </thead>
               <tbody>
@@ -16,10 +19,33 @@
                   <td>{{this.name}}</td>
                   <td>{{this.age}}</td>
                   <td>{{this.gender}}</td>
-                  <td>{{this.description}}</td>    
+                  <td>{{this.description}}</td>
+                  <td>{{this.email}}</td>
+                  <td>
+                    <form action="/update-pacient/{{this.id}}" method="GET">                    
+                    {{!--<button type="submit" id="deleteSubmit">Send Email</button>--}}
+                    <input class="button-primary" type="submit" value="Edit">
+                    </form>
+                  </td>
+                  
+                  <td>
+                  <form action="/delete-pacient/{{this.id}}" method="GET">                    
+                    {{!--<button type="submit" id="deleteSubmit">Delete</button>--}}
+                    <input class="button-primary" type="submit" value="Delete" id="deleteButton">
+                  </form>
+                  </td>
+                  <td>
+                    <form action="/sayHello/{{this.email}}" method="GET">
+                    {{!--<button type="submit" name="your_name" value="your_value" class="btn-link">Send Mail</button>--}}
+                    <input class="button-primary" type="submit" value="Email">
+                    </form>
+                  </td>
                 {{/each}}
               </tbody>
             </table>
+          
+          
+          </form>
         </div>
     </div>
 </div>

@@ -9,39 +9,12 @@ var Disease = require('./diseaseData_model');
 var Pacient = require('./pacient-data_model');
 var Schema = mongoose.Schema;
 
-
-
-// var diseaseDateSchema = new Schema({
-//     title: String,
-//     symptoms: String,
-//     diagnostic: String
-// }, {
-//     collection: 'disease-data'
-// });
-
-// var userDateSchema = new Schema({
-//     name: String,
-//     gender: String,
-//     age: Number,
-//     description: String
-// }, {
-//     collection: 'user-data'
-// });
-
-
-// var DiseaseDate = mongoose.model('DiseaseDate', diseaseDateSchema);
-// var UserDate = mongoose.model('UserDate', userDateSchema);
-
-
-
 /* GET home page. */
 
-//test route
+
 router.get('/index', function (req, res) {
     res.render('index', {
-        title: 'Express' });
-   
-    
+        title: 'Express' });       
 });
 
 router.get('/index', function (req, res, next) {
@@ -87,18 +60,13 @@ router.post('/index', function (req, res) {
             var str = new String(item);
             resultMatch = str.match(regExp);
 
-            lArray.push(resultMatch.length);
-            //return lArray;
-            //console.log(lArray);
-            
+            lArray.push(resultMatch.length);            
         });
         getPercentMatch();  
 
         res.render('index', { items: doc, 
-                              items2: percentArray});
-        
-        // console.log(percentArray);      
-            
+                              items2: percentArray});        
+        // console.log(percentArray);                  
     });
 
     var query2 = Disease.find({
@@ -106,10 +74,7 @@ router.post('/index', function (req, res) {
     }, 'symptoms', function (err, docs) {
         //res.render('index', { items: docs });
         query2.exec(function (err, symptom) {
-            if (err) return handleError(err);
-
-            //Перебор массива симптомов на количество совпадений
-
+            if (err) return handleError(err);    
         });
     });
 });

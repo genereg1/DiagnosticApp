@@ -56,6 +56,7 @@ input[type=checkbox]:checked ~ .symptoms {
     border-radius: 1px;
     margin: 20px;
     padding: 10px;
+    /*display: none;*/
   
 }
 
@@ -122,9 +123,9 @@ body {
 
 #startButton {
   color: white;
-  position: relative;
-  top: 90px;
-  left: 981px;
+  position: absolute;
+  top: 170px;
+  left: 975px;
   background: #292c47;
 }
 
